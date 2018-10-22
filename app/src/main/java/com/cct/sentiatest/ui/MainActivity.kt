@@ -1,10 +1,11 @@
-package com.cct.sentiatest
+package com.cct.sentiatest.ui
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.cct.sentiatest.R
 
 import kotlinx.android.synthetic.main.activity_main.*
 
