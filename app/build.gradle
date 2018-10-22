@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply from: "../config/dependencies.gradle"
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -24,10 +26,33 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:design:27.1.1'
+
+    implementation support.appcompat
+    implementation support.design
+    implementation support.constraint
+
+    kapt dagger.compiler
+    implementation dagger.library
+
+    implementation rx.java
+    implementation rx.android
+
+    implementation network.retrofit.library
+    implementation network.retrofit.gson
+    implementation network.retrofit.rxAdapter
+
+    implementation network.okhttp.library
+    implementation network.okhttp.logging
+
+    debugImplementation network.okhttp.chuck.debug
+    releaseImplementation network.okhttp.chuck.release
+
+    implementation network.glide.library
+    kapt network.glide.compiler
+    implementation network.glide.transformation
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

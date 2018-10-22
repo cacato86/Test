@@ -1,0 +1,72 @@
+ext {
+    // Support
+    def supportVersion = "27.1.1"
+    def supportConstraintVersion = "1.1.3"
+    support = [
+            appcompat : "com.android.support:appcompat-v7:$supportVersion",
+            design    : "com.android.support:design:$supportVersion",
+            constraint: "com.android.support.constraint:constraint-layout:$supportConstraintVersion",
+    ]
+
+    def daggerVersion = "2.14.1"
+    dagger = [
+            compiler: "com.google.dagger:dagger-compiler:$daggerVersion",
+            library : "com.google.dagger:dagger:$daggerVersion",
+    ]
+
+    def rxJavaVersion = "2.1.8"
+    rx = [
+            java   : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            android: "io.reactivex.rxjava2:rxandroid:2.0.1"
+    ]
+
+    def retrofitVersion = "2.3.0"
+    def chuckVersion = "1.1.0"
+    def okHttpVersion = "3.9.1"
+    def glideVersion = "4.6.1"
+    def glideTransformationVersion = "3.3.0"
+    network = [
+            retrofit: [
+                    library  : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+                    rxAdapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+                    gson     : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            ],
+
+            okhttp  : [
+                    library: "com.squareup.okhttp3:okhttp:$okHttpVersion",
+                    logging: "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+                    chuck  : [
+                            debug  : "com.readystatesoftware.chuck:library:$chuckVersion",
+                            release: "com.readystatesoftware.chuck:library-no-op:$chuckVersion"
+                    ]
+            ],
+
+            glide   : [
+                    library       : "com.github.bumptech.glide:glide:$glideVersion",
+                    compiler      : "com.github.bumptech.glide:compiler:$glideVersion",
+                    transformation: "jp.wasabeef:glide-transformations:$glideTransformationVersion"
+            ]
+    ]
+
+    def espressoVersion = "1.0.1"
+    testing = [
+            jUnit    : "junit:junit:4.12",
+            dexOpener: "com.github.tmurakami:dexopener:0.12.1",
+            espresso : [
+                    core   : "com.android.support.test.espresso:espresso-core:3.0.1",
+                    runner : "com.android.support.test:runner:$espressoVersion",
+                    rules  : "com.android.support.test:rules:$espressoVersion",
+                    intents: "com.android.support.test.espresso:espresso-intents:3.0.1",
+                    barista: "com.schibsted.spain:barista:2.4.0"
+            ],
+            mockito  : [
+                    core   : "org.mockito:mockito-core:2.13.0",
+                    kotlin : "com.nhaarman:mockito-kotlin:1.5.0",
+                    android: "org.mockito:mockito-android:2.13.0",
+            ],
+            dagger   : [
+                    mock  : "com.github.fabioCollini.daggermock:daggermock:0.8.4",
+                    kotlin: "com.github.fabioCollini.daggermock:daggermock-kotlin:0.8.4"
+            ]
+    ]
+}
