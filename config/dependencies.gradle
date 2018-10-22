@@ -8,10 +8,13 @@ ext {
             constraint: "com.android.support.constraint:constraint-layout:$supportConstraintVersion",
     ]
 
-    def daggerVersion = "2.14.1"
+    def daggerVersion = "2.18"
     dagger = [
-            compiler: "com.google.dagger:dagger-compiler:$daggerVersion",
-            library : "com.google.dagger:dagger:$daggerVersion",
+            compiler : "com.google.dagger:dagger-compiler:$daggerVersion",
+            library  : "com.google.dagger:dagger:$daggerVersion",
+            processor: "com.google.dagger:dagger-android-processor:$daggerVersion",
+            android  : "com.google.dagger:dagger-android:$daggerVersion",
+            support  :"com.google.dagger:dagger-android-support:$daggerVersion"
     ]
 
     def rxJavaVersion = "2.1.8"

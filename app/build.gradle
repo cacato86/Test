@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 apply from: "../config/dependencies.gradle"
 
 android {
@@ -35,6 +37,10 @@ dependencies {
 
     kapt dagger.compiler
     implementation dagger.library
+
+    kapt dagger.processor
+    implementation dagger.android
+    implementation dagger.support
 
     implementation rx.java
     implementation rx.android
