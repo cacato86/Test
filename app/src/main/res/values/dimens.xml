@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="property_cell_image_heigh">160dp</dimen>
+    <dimen name="property_container_heigh">200dp</dimen>
+    <dimen name="property_owner_heigh">80dp</dimen>
+    <dimen name="normal_margin">10dp</dimen>
 </resources>
