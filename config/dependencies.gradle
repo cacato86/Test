@@ -52,6 +52,9 @@ ext {
             ]
     ]
 
+    def roundedImageVersion = "2.3.0"
+    roundedImage = "com.makeramen:roundedimageview:$roundedImageVersion"
+
     def espressoVersion = "1.0.1"
     testing = [
             jUnit    : "junit:junit:4.12",
