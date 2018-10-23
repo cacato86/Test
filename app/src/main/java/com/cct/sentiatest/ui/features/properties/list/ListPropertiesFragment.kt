@@ -7,9 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.cct.sentiatest.R
 
-/**
- * A placeholder fragment containing a simple view.
- */
 class ListPropertiesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
