@@ -5,7 +5,7 @@
     android:id="@+id/propertyCell"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="@dimen/normal_margin"
     app:cardCornerRadius="10dp"
     app:cardElevation="1dp">
 
@@ -16,12 +16,12 @@
         <RelativeLayout
             android:id="@+id/headerContainer"
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="@dimen/property_container_heigh">
 
             <ImageView
                 android:id="@+id/propertyImage"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="@dimen/property_cell_image_heigh"
                 android:scaleType="centerCrop"
                 tools:src="@tools:sample/avatars" />
 
@@ -30,34 +30,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="@dimen/normal_margin"
+                android:layout_marginStart="@dimen/normal_margin"
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/ownerImage"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    style="@style/Property.Owner.Image"
+                    android:layout_width="@dimen/property_owner_heigh"
+                    android:layout_height="@dimen/property_owner_heigh"
                     android:layout_marginBottom="4dp"
-                    android:background="@drawable/circular_background"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
                     app:riv_corner_radius="40dip"
                     app:riv_mutate_background="true"
                     tools:src="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/ownerName"
+                    style="@style/Property.Owner.Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/normal_margin"
+                    android:layout_marginStart="@dimen/normal_margin"
                     tools:text="Matt red" />
             </LinearLayout>
         </RelativeLayout>
@@ -67,59 +61,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/headerContainer"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:layout_marginRight="@dimen/normal_margin"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/normal_margin"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/area"
+                style="@style/Property.Area.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:paddingLeft="4dp"
-                android:paddingStart="4dp"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/normal_margin"
                 tools:text="Eastern Suburbs" />
 
             <TextView
                 android:id="@+id/location"
+                style="@style/Property.Location.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:drawableLeft="@drawable/ic_location"
-                android:drawablePadding="4dp"
-                android:drawableStart="@drawable/ic_location"
-                android:gravity="center"
-                android:textColor="@color/grey"
-                android:textSize="14sp"
+                android:layout_marginBottom="@dimen/normal_margin"
                 tools:text="79 Anglesea Street, Bondi, NSW" />
 
             <TextView
                 android:id="@+id/price"
+                style="@style/Property.Price.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:paddingLeft="4dp"
-                android:paddingStart="4dp"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/normal_margin"
                 tools:text="20000 AUD" />
 
             <TextView
                 android:id="@+id/description"
+                style="@style/Property.Description.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/grey"
-                android:textSize="12sp"
+                android:layout_marginBottom="@dimen/normal_margin"
                 tools:text="Family Home With Potential In The Heart Of Bondi Presenting an abundance of potential in the heart of Bondi, this dual layout home set over 440sqm is available to the market for the first time in over 34 years. While perfectly liveable as i..." />
 
         </LinearLayout>
