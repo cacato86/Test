@@ -25,10 +25,21 @@ class ListPropertiesPresenter @Inject constructor()
 
         //FAKE DATA
         val list = listOf(
-                PropertyVM("Area 1", "1", "1", true),
-                PropertyVM("Area 2", "1", "1", true),
-                PropertyVM("Area 3", "1", "1", false),
-                PropertyVM("Area 4", "1", "1", false))
+                PropertyVM("Eastern Suburbs", "3", "2", "1",
+                        "Family Home With Potential In The Heart Of Bondi Presenting an abundance of potential in the heart of Bondi, this dual layout home set over 440sqm is available to the market for the first time in over 34 years. While perfectly liveable as i...",
+                        "https://storage.googleapis.com/idx-photos-gs.ihouseprd.com/TX-NTREIS/13807656/org/003.jpg",
+                        "20000 AUS", "Mattew red", "https://www.shareicon.net/data/128x128/2016/01/12/702155_users_512x512.png",
+                        "79 Anglesea Street, Bondi, NSW", true),
+                PropertyVM("Eastern Suburbs", "3", "2", "1",
+                        "Family Home With Potential In The Heart Of Bondi Presenting an abundance of potential in the heart of Bondi, this dual layout home set over 440sqm is available to the market for the first time in over 34 years. While perfectly liveable as i...",
+                        "https://storage.googleapis.com/idx-photos-gs.ihouseprd.com/TX-NTREIS/13807656/org/003.jpg",
+                        "20000 AUS", "Mattew red", "https://www.shareicon.net/data/128x128/2016/01/12/702155_users_512x512.png",
+                        "79 Anglesea Street, Bondi, NSW", false),
+                PropertyVM("Eastern Suburbs", "3", "2", "1",
+                        "Family Home With Potential In The Heart Of Bondi Presenting an abundance of potential in the heart of Bondi, this dual layout home set over 440sqm is available to the market for the first time in over 34 years. While perfectly liveable as i...",
+                        "https://storage.googleapis.com/idx-photos-gs.ihouseprd.com/TX-NTREIS/13807656/org/003.jpg",
+                        "20000 AUS", "Mattew red", "https://www.shareicon.net/data/128x128/2016/01/12/702155_users_512x512.png",
+                        "79 Anglesea Street, Bondi, NSW", true))
         render(RenderProperties(list))
     }
 }

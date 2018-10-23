@@ -34,6 +34,7 @@ dependencies {
     implementation support.appcompat
     implementation support.design
     implementation support.constraint
+    implementation support.cardview
 
     kapt dagger.compiler
     implementation dagger.library
