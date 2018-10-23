@@ -6,7 +6,7 @@
 
     <stroke
         android:width="2dp"
-        android:color="@color/colorPrimaryTransparent" />
+        android:color="@color/blackTransparent" />
 
     <size
         android:width="80dp"

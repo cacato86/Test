@@ -5,14 +5,14 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.cct.sentiatest.R
 import com.cct.sentiatest.ui.commons.dsl.dsl
-import kotlinx.android.synthetic.main.property_normal_item.view.*
+import kotlinx.android.synthetic.main.property_item.view.*
 
 class PropertyNormalItem @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     init {
-        inflate(context, R.layout.property_normal_item, this)
+        inflate(context, R.layout.property_item, this)
     }
 
     private fun initView(property: PropertyVM, openDetailAction: (PropertyVM) -> Unit) {
@@ -28,6 +28,9 @@ class PropertyNormalItem @JvmOverloads constructor(
         area.text = property.area
         location.text = property.address
         description.text = property.description
+        beds.text = property.bedrooms
+        bathrooms.text = property.bathrooms
+        cars.text = property.carspaces
         propertyCell.setOnClickListener { openDetailAction(property) }
     }
 
