@@ -1,13 +1,19 @@
 package com.cct.sentiatest.ui.features.properties.list
 
-import com.rise.bgo.ui.features.commons.Action
+import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.LoadProperties
 import com.rise.bgo.ui.features.commons.BasePresenter
-import com.rise.bgo.ui.features.commons.State
 import javax.inject.Inject
 
-class ListPropertiesPresenter @Inject constructor() : BasePresenter<State, Action>() {
+class ListPropertiesPresenter @Inject constructor()
+    : BasePresenter<ListPropertiesState, ListPropertiesAction>() {
 
-    override fun reduce(action: Action) {
+    override fun reduce(action: ListPropertiesAction) {
+        when (action) {
+            is LoadProperties -> loadProperties()
+        }
+    }
+
+    private fun loadProperties() {
 
     }
 }
