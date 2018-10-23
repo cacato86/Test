@@ -13,11 +13,11 @@ class PropertyNormalItem @JvmOverloads constructor(
         inflate(context, R.layout.property_normal_item, this)
     }
 
-    private fun initView(game: PropertyVM, openDetailAction: (PropertyVM) -> Unit) {
+    private fun initView(property: PropertyVM, openDetailAction: (PropertyVM) -> Unit) {
 
     }
 
-    fun bind(game: PropertyVM, gameClickAction: (PropertyVM) -> Unit) {
-        initView(game, gameClickAction)
+    fun bind(property: PropertyVM, gameClickAction: (PropertyVM) -> Unit) {
+        initView(property, gameClickAction)
     }
 }
