@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cct.sentiatest.R
+import com.cct.sentiatest.SentiaApp.Companion.component
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.OpenDetail
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.RenderProperties
 import com.cct.sentiatest.ui.features.properties.list.item.PropertyVM
@@ -20,14 +21,20 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
 
     private lateinit var adapter: ListPropertiesAdapter
 
+    override fun onAttach(context: Context?) {
+        component inject this
+        super.onAttach(context)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.list_properties_layout, container, false)
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         initView()
+        presenter init (this)
     }
 
     private fun initView() {
