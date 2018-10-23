@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:parentTag="android.widget.RelativeLayout">
 
-    <TextView
+    <TextView android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="PREMIUM" />
+        android:text="PREMIUM"
+        android:background="@color/colorPremium"/>
 </merge>
