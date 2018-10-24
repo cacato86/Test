@@ -76,4 +76,8 @@ ext {
                     kotlin: "com.github.fabioCollini.daggermock:daggermock-kotlin:0.8.4"
             ]
     ]
+
+    common = [
+            javaxAnnotions: "javax.annotation:javax.annotation-api:1.2"
+    ]
 }
