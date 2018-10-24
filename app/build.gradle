@@ -20,52 +20,59 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            buildConfigField "String", "BASE_URL_API", '"https://sentia-test.herokuapp.com/"'
+        }
+        debug {
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+            debuggable true
             buildConfigField "String", "BASE_URL_API", '"https://sentia-test.herokuapp.com/"'
         }
     }
-}
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation support.appcompat
-    implementation support.design
-    implementation support.constraint
-    implementation support.cardview
+        implementation support.appcompat
+        implementation support.design
+        implementation support.constraint
+        implementation support.cardview
 
-    kapt dagger.compiler
-    implementation dagger.library
+        kapt dagger.compiler
+        implementation dagger.library
 
-    kapt dagger.processor
-    implementation dagger.android
-    implementation dagger.support
+        kapt dagger.processor
+        implementation dagger.android
+        implementation dagger.support
 
-    implementation rx.java
-    implementation rx.android
+        implementation rx.java
+        implementation rx.android
 
-    implementation network.retrofit.library
-    implementation network.retrofit.gson
-    implementation network.retrofit.rxAdapter
+        implementation network.retrofit.library
+        implementation network.retrofit.gson
+        implementation network.retrofit.rxAdapter
 
-    implementation network.okhttp.library
-    implementation network.okhttp.logging
+        implementation network.okhttp.library
+        implementation network.okhttp.logging
 
-    debugImplementation network.okhttp.chuck.debug
-    releaseImplementation network.okhttp.chuck.release
+        debugImplementation network.okhttp.chuck.debug
+        releaseImplementation network.okhttp.chuck.release
 
-    implementation network.glide.library
-    kapt network.glide.compiler
-    implementation network.glide.transformation
+        implementation network.glide.library
+        kapt network.glide.compiler
+        implementation network.glide.transformation
 
-    compileOnly common.javaxAnnotions
+        compileOnly common.javaxAnnotions
 
-    implementation roundedImage
+        implementation roundedImage
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+        testImplementation 'junit:junit:4.12'
+        androidTestImplementation 'com.android.support.test:runner:1.0.2'
+        androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    }
 }

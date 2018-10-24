@@ -36,6 +36,7 @@ class ListPropertiesAdapter(private val openDetailAction: (PropertyVM) -> Unit)
             clear()
             addAll(collection)
         }
+        notifyDataSetChanged()
     }
 
     abstract class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

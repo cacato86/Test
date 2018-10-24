@@ -44,5 +44,5 @@ class PropertiesMapperTest {
 
     private fun modelListItem(premium: Boolean): Property =
             Property("area", listOf("url", "url2"), 1, 1, 1, "20000", "AUD", premium, "address", "address2",
-                    "suburb", "state", "James", "Red", "medium")
+                    "suburb", "state", "James", "Red", "medium", "description")
 }

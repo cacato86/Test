@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.cct.sentiatest.R
 import com.cct.sentiatest.SentiaApp.Companion.component
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.OpenDetail
-import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.RenderProperties
+import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.PropertiesLoaded
 import com.cct.sentiatest.ui.features.properties.list.item.PropertyVM
 import com.rise.bgo.ui.features.commons.BaseView
 import kotlinx.android.synthetic.main.list_properties_layout.*
@@ -24,6 +24,11 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
     override fun onAttach(context: Context?) {
         component inject this
         super.onAttach(context)
+    }
+
+    override fun onDetach() {
+        presenter.destroy()
+        super.onDetach()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +49,7 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
 
     override fun render(state: ListPropertiesState) {
         when (state) {
-            is RenderProperties -> renderProperties(state.properties)
+            is PropertiesLoaded -> renderProperties(state.properties)
         }
     }
 

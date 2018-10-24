@@ -2,6 +2,7 @@ package com.cct.sentiatest.di.module
 
 import android.content.Context
 import com.cct.sentiatest.BuildConfig
+import com.cct.sentiatest.data.net.properties.PropertiesApi
 import com.google.gson.Gson
 import com.readystatesoftware.chuck.ChuckInterceptor
 import com.rise.bgo.ui.util.ext.addTimeout
@@ -32,7 +33,7 @@ open class NetworkModule {
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor.Level.BODY
         } else {
-            HttpLoggingInterceptor.Level.NONE
+            HttpLoggingInterceptor.Level.BODY
         }
     }
 
@@ -58,11 +59,12 @@ open class NetworkModule {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(Gson()))
 
-   /* @Provides
+    @Provides
     @Named(API_RETROFIT)
     fun getApiRetrofit(@Named(RETROFIT) retrofitBuilder: Retrofit.Builder): Retrofit =
             retrofitBuilder.baseUrl(BuildConfig.BASE_URL_API).build()
 
     @Provides
-    fun getRegistrationApi(@Named(API_RETROFIT) retrofit: Retrofit): RegisterApi = retrofit.create()*/
+    fun getPropertiesApi(@Named(API_RETROFIT) retrofit: Retrofit): PropertiesApi =
+            retrofit.create(PropertiesApi::class.java)
 }
