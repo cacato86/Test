@@ -1,6 +1,6 @@
 package com.cct.sentiatest.ui.features.properties.list
 
-import com.cct.sentiatest.domain.usecases.ObtainProperties
+import com.cct.sentiatest.domain.usecases.ObtainPropertiesUseCase
 import com.cct.sentiatest.ui.features.properties.ListPropertiesMapper
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.LoadProperties
 import com.cct.sentiatest.ui.utils.observeOnUI
@@ -9,7 +9,7 @@ import com.rise.bgo.ui.features.commons.BasePresenter
 import com.rise.bgo.ui.features.commons.BaseView
 import javax.inject.Inject
 
-class ListPropertiesPresenter @Inject constructor(private val obtainProperties: ObtainProperties,
+class ListPropertiesPresenter @Inject constructor(private val obtainProperties: ObtainPropertiesUseCase,
                                                   private val mapper: ListPropertiesMapper)
     : BasePresenter<ListPropertiesState, ListPropertiesAction>() {
 

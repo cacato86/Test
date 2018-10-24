@@ -2,6 +2,7 @@ package com.cct.sentiatest.ui.features.properties.list
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,11 @@ import android.view.ViewGroup
 import com.cct.sentiatest.R
 import com.cct.sentiatest.SentiaApp.Companion.component
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.OpenDetail
-import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.PropertiesLoaded
+import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.*
 import com.cct.sentiatest.ui.features.properties.list.item.PropertyVM
 import com.rise.bgo.ui.features.commons.BaseView
 import kotlinx.android.synthetic.main.list_properties_layout.*
+import kotlinx.android.synthetic.main.loader_full_screen.*
 import javax.inject.Inject
 
 class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
@@ -50,10 +52,25 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
     override fun render(state: ListPropertiesState) {
         when (state) {
             is PropertiesLoaded -> renderProperties(state.properties)
+            is Loading -> renderLoader(state.loading)
+            is GenericError -> renderError(state.error)
         }
     }
 
     private fun renderProperties(properties: List<PropertyVM>) {
         adapter.addAll(properties)
+    }
+
+    private fun renderLoader(loading: Boolean) {
+        if (loading) {
+            fullLoader.visibility = View.VISIBLE
+        } else {
+            fullLoader.visibility = View.GONE
+        }
+    }
+
+
+    private fun renderError(error: String) {
+        view?.let { Snackbar.make(it, error, Snackbar.LENGTH_SHORT).show() }
     }
 }
