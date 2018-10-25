@@ -69,7 +69,6 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
         }
     }
 
-
     private fun renderError(error: String) {
         view?.let { Snackbar.make(it, error, Snackbar.LENGTH_SHORT).show() }
     }
