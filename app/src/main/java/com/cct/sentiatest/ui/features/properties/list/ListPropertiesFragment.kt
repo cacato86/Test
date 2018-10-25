@@ -33,6 +33,11 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
         super.onDetach()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.list_properties_layout, container, false)
