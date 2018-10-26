@@ -11,6 +11,7 @@ import com.cct.sentiatest.R
 import com.cct.sentiatest.SentiaApp.Companion.component
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.OpenDetail
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.*
+import com.cct.sentiatest.ui.features.properties.list.di.ListPropertiesModule
 import com.cct.sentiatest.ui.features.properties.list.item.PropertyVM
 import com.rise.bgo.ui.features.commons.BaseView
 import kotlinx.android.synthetic.main.list_properties_layout.*
@@ -24,7 +25,8 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
     private lateinit var adapter: ListPropertiesAdapter
 
     override fun onAttach(context: Context?) {
-        component inject this
+        //component add ListPropertiesModule() inject this
+        component add ListPropertiesModule(this) inject this
         super.onAttach(context)
     }
 

@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+
 @Module
 open class ApplicationModule(private val context: Context) {
 
