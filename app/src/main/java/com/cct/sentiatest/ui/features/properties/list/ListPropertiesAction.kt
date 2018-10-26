@@ -1,9 +1,10 @@
 package com.cct.sentiatest.ui.features.properties.list
 
+import com.cct.sentiatest.ui.commons.Action
 import com.cct.sentiatest.ui.features.properties.list.item.PropertyVM
-import com.rise.bgo.ui.features.commons.Action
 
 sealed class ListPropertiesAction : Action() {
     object LoadProperties : ListPropertiesAction()
     data class OpenDetail(val property: PropertyVM) : ListPropertiesAction()
+    object RestoreData : ListPropertiesAction()
 }

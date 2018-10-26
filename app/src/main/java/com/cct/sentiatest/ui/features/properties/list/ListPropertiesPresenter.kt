@@ -1,32 +1,28 @@
 package com.cct.sentiatest.ui.features.properties.list
 
 import com.cct.sentiatest.domain.usecases.ObtainPropertiesUseCase
+import com.cct.sentiatest.domain.usecases.RestorePropertiesUseCase
+import com.cct.sentiatest.ui.commons.BasePresenter
 import com.cct.sentiatest.ui.features.properties.ListPropertiesMapper
-import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.LoadProperties
-import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.OpenDetail
+import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.*
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.OpenPropertyDetail
 import com.cct.sentiatest.ui.features.properties.list.item.PropertyVM
 import com.cct.sentiatest.ui.utils.observeOnUI
 import com.cct.sentiatest.ui.utils.plusAssign
-import com.rise.bgo.ui.features.commons.BasePresenter
-import com.rise.bgo.ui.features.commons.BaseView
 import javax.inject.Inject
 
 
 class ListPropertiesPresenter @Inject
 constructor(private val obtainProperties: ObtainPropertiesUseCase,
-                                                  private val mapper: ListPropertiesMapper)
+            private val restoreProperties: RestorePropertiesUseCase,
+            private val mapper: ListPropertiesMapper)
     : BasePresenter<ListPropertiesState, ListPropertiesAction>() {
-
-    override fun init(view: BaseView<ListPropertiesState>) {
-        super.init(view)
-        loadProperties()
-    }
 
     override fun reduce(action: ListPropertiesAction) {
         when (action) {
             is LoadProperties -> loadProperties()
             is OpenDetail -> openDetail(action.property)
+            is RestoreData -> returnData()
         }
     }
 
@@ -42,5 +38,13 @@ constructor(private val obtainProperties: ObtainPropertiesUseCase,
 
     private fun openDetail(property: PropertyVM) {
         render(OpenPropertyDetail(property.id))
+    }
+
+    private fun returnData() {
+        disposables += restoreProperties.execute()
+                .observeOnUI()
+                .subscribe({
+                    render(mapper.mapListProperties(it))
+                }, { render(mapper.mapError(it)) })
     }
 }

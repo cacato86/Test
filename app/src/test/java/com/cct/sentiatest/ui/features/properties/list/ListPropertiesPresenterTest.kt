@@ -10,7 +10,7 @@ import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.*
 import com.cct.sentiatest.utils.ListPropertiesFactory.generateEmptyPropertiesResponse
 import com.cct.sentiatest.utils.configureRxThreading
 import com.nhaarman.mockito_kotlin.*
-import com.rise.bgo.ui.features.commons.BaseView
+import com.cct.sentiatest.ui.commons.BaseView
 import io.reactivex.Single
 import org.junit.Assert.assertTrue
 import org.junit.Before

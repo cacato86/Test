@@ -2,6 +2,7 @@ package com.cct.sentiatest.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import com.cct.sentiatest.R
 import com.cct.sentiatest.SentiaApp
@@ -31,6 +32,15 @@ class MainActivity : AppCompatActivity(), OnItemClickedListener {
         if (item_detail_container != null) {
             landscape = true
         }
+        
+        if (savedInstanceState == null) {
+            router.addInitialFragment()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        outState?.putBoolean("BUNDLE", true)
     }
 
     override fun onPropertySelected(id: String) {

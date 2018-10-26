@@ -1,4 +1,4 @@
-package com.rise.bgo.ui.util.ext
+package com.cct.sentiatest.ui.utils
 
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit

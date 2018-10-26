@@ -1,7 +1,7 @@
 package com.cct.sentiatest.ui.features.properties.list
 
 import com.cct.sentiatest.ui.features.properties.list.item.PropertyVM
-import com.rise.bgo.ui.features.commons.State
+import com.cct.sentiatest.ui.commons.State
 
 sealed class ListPropertiesState : State() {
     data class Loading(val loading: Boolean) : ListPropertiesState()

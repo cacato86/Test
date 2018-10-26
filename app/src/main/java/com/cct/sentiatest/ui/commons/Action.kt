@@ -1,5 +1,3 @@
-package com.rise.bgo.ui.features.commons
+package com.cct.sentiatest.ui.commons
 
-open class Action{
-
-}
+open class Action

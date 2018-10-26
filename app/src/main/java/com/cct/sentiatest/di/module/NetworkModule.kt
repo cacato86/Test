@@ -3,9 +3,9 @@ package com.cct.sentiatest.di.module
 import android.content.Context
 import com.cct.sentiatest.BuildConfig
 import com.cct.sentiatest.data.net.properties.PropertiesApi
+import com.cct.sentiatest.ui.utils.addTimeout
 import com.google.gson.Gson
 import com.readystatesoftware.chuck.ChuckInterceptor
-import com.rise.bgo.ui.util.ext.addTimeout
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -33,7 +33,7 @@ open class NetworkModule {
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor.Level.BODY
         } else {
-            HttpLoggingInterceptor.Level.BODY
+            HttpLoggingInterceptor.Level.NONE
         }
     }
 
