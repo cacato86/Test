@@ -1,12 +1,10 @@
 package com.cct.sentiatest.ui.features.properties.list
 
-import android.support.v4.app.Fragment
 import com.cct.sentiatest.data.net.properties.PropertiesApi
 import com.cct.sentiatest.data.net.properties.PropertiesDataSource
 import com.cct.sentiatest.data.net.properties.PropertiesMapper
 import com.cct.sentiatest.domain.repositories.PropertyRepository
 import com.cct.sentiatest.domain.usecases.ObtainPropertiesUseCase
-import com.cct.sentiatest.ui.commons.Router
 import com.cct.sentiatest.ui.features.properties.ListPropertiesMapper
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.*
 import com.cct.sentiatest.utils.ListPropertiesFactory.generateEmptyPropertiesResponse
@@ -41,18 +39,14 @@ class ListPropertiesPresenterTest {
         createMocks()
         propertyRepository = PropertyRepository(PropertiesDataSource(api, PropertiesMapper()))
         obtainPropertiesUseCase = ObtainPropertiesUseCase(propertyRepository)
-        presenter = ListPropertiesPresenter(obtainPropertiesUseCase, ListPropertiesMapper(), router, destination)
+        presenter = ListPropertiesPresenter(obtainPropertiesUseCase, ListPropertiesMapper())
     }
 
     private lateinit var api: PropertiesApi
-    private lateinit var router: Router
-    private lateinit var destination: Fragment
 
     private fun createMocks() {
         view = mock()
         api = mock()
-        router = mock()
-        destination = mock()
     }
 
     @Test
