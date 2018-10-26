@@ -18,6 +18,6 @@ object ListPropertiesFactory {
     fun generateCorrectPropertyMapped(): List<Property> = listOf(modelListItem(false), modelListItem(true))
 
     private fun modelListItem(premium: Boolean): Property =
-            Property("area", listOf("url", "url2"), 1, 1, 1, "20000", "AUD", premium, "address", "address2",
-                    "suburb", "state", "James", "Red", "medium", "description")
+            Property("1", "area", listOf("url", "url2"), 1, 1, 1, "20000", "AUD", premium, "address",
+                    "address2", "suburb", "state", "James", "Red", "medium", "description")
 }

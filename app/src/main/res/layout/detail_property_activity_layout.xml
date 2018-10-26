@@ -3,11 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text"
+    <FrameLayout
+        android:id="@+id/item_detail_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent" />
 </RelativeLayout>

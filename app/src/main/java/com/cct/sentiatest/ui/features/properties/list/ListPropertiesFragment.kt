@@ -11,7 +11,6 @@ import com.cct.sentiatest.R
 import com.cct.sentiatest.SentiaApp.Companion.component
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.OpenDetail
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.*
-import com.cct.sentiatest.ui.features.properties.list.di.ListPropertiesModule
 import com.cct.sentiatest.ui.features.properties.list.item.PropertyVM
 import com.rise.bgo.ui.features.commons.BaseView
 import kotlinx.android.synthetic.main.list_properties_layout.*
@@ -24,10 +23,16 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
 
     private lateinit var adapter: ListPropertiesAdapter
 
+    private lateinit var callback: OnItemClickedListener
+
     override fun onAttach(context: Context?) {
-        //component add ListPropertiesModule() inject this
-        component add ListPropertiesModule(this) inject this
         super.onAttach(context)
+        try {
+            callback = activity as OnItemClickedListener
+        } catch (e: ClassCastException) {
+            throw ClassCastException(activity.toString() + " must implement OnItemClickedListener")
+        }
+        component inject this
     }
 
     override fun onDetach() {
@@ -61,6 +66,7 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
             is PropertiesLoaded -> renderProperties(state.properties)
             is Loading -> renderLoader(state.loading)
             is GenericError -> renderError(state.error)
+            is OpenPropertyDetail -> openDetail(state.id)
         }
     }
 
@@ -78,5 +84,13 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
 
     private fun renderError(error: String) {
         view?.let { Snackbar.make(it, error, Snackbar.LENGTH_SHORT).show() }
+    }
+
+    private fun openDetail(id: String) {
+        callback.onPropertySelected(id)
+    }
+
+    interface OnItemClickedListener {
+        fun onPropertySelected(id: String)
     }
 }

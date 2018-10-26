@@ -10,7 +10,7 @@ class ListPropertiesMapper @Inject constructor() {
 
     fun mapListProperties(properties: List<Property>): PropertiesLoaded =
             PropertiesLoaded(properties.map { it ->
-                PropertyVM(it.area, "${it.bedrooms}", "${it.bathrooms}", "${it.carSpaces}",
+                PropertyVM(it.id, it.area, "${it.bedrooms}", "${it.bathrooms}", "${it.carSpaces}",
                         it.description, it.imageUrls[3], formatPrice(it.price, it.currency),
                         formatOwnerName(it.ownerName, it.ownerLastName), it.ownerImage,
                         formatAddress(it.address, it.state), it.isPremium)

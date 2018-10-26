@@ -3,10 +3,9 @@
     android:id="@+id/fullLoader"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blackTransparent20"
-    android:gravity="center"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:gravity="center">
 
     <include layout="@layout/loader" />
 </RelativeLayout>

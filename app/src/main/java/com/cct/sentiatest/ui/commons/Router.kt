@@ -14,7 +14,7 @@ class Router {
 
     fun open(fragment: Fragment) {
         mFragmentManager.beginTransaction()
-                .add(R.id.fragment, fragment)
+                .replace(R.id.item_detail_container, fragment)
                 .addToBackStack(fragment.toString())
                 .commit()
     }

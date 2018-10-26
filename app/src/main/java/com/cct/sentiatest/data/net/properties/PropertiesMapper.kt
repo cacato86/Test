@@ -7,7 +7,7 @@ import javax.inject.Inject
 class PropertiesMapper @Inject constructor() {
     fun mapProperties(properties: PropertiesResponse): List<Property> =
             properties.data.listings.map { it ->
-                Property(it.area, it.imageUrls, it.bedrooms, it.bathrooms, it.carspaces, it.displayPrice,
+                Property(it.id, it.area, it.imageUrls, it.bedrooms, it.bathrooms, it.carspaces, it.displayPrice,
                         it.currency, convertPriority(it.isPremium), it.location.address, it.location.address2,
                         it.location.suburb, it.location.state, it.owner.name, it.owner.lastName,
                         it.owner.image.medium.url, it.description)
