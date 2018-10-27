@@ -6,7 +6,13 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class ObtainPropertiesUseCase @Inject constructor(private val propertyRepository: PropertyRepository) {
-    //TODO add parameter to this method to give the possibility to order the list or notm and add some test
-    fun execute(): Single<List<Property>> = propertyRepository.getProperties()
-            .map { it.sortedWith(compareByDescending { it.isPremium }) }
+    //I put the premium first (like google in chrome with their premium links) but you can customize
+    fun execute(orderFeatures: Boolean = true): Single<List<Property>> = propertyRepository.getProperties()
+            .map { propertiesList ->
+                if (orderFeatures) {
+                    propertiesList.sortedWith(compareByDescending { it.isPremium })
+                } else {
+                    propertiesList
+                }
+            }
 }

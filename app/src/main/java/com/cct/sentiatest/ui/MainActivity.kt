@@ -17,6 +17,10 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), OnItemClickedListener {
 
+    companion object {
+        private const val BUNDLE = "BUNDLE"
+    }
+
     @Inject
     lateinit var router: Router
 
@@ -32,15 +36,10 @@ class MainActivity : AppCompatActivity(), OnItemClickedListener {
         if (item_detail_container != null) {
             landscape = true
         }
-        
+
         if (savedInstanceState == null) {
             router.addInitialFragment()
         }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
-        super.onSaveInstanceState(outState, outPersistentState)
-        outState?.putBoolean("BUNDLE", true)
     }
 
     override fun onPropertySelected(id: String) {
@@ -59,4 +58,9 @@ class MainActivity : AppCompatActivity(), OnItemClickedListener {
     }
 
     private fun generateData(id: String): Bundle = Bundle().apply { putString(ARG_ITEM_ID, id) }
+
+    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        outState?.putBoolean(BUNDLE, true)
+    }
 }

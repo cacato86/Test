@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 class ListPropertiesMapper @Inject constructor() {
 
+    //I get "it.imageUrls[3]" the number 3 just randomly, int he future we'd use a carousel with all the fotos
     fun mapListProperties(properties: List<Property>): PropertiesLoaded =
             PropertiesLoaded(properties.map { it ->
                 PropertyVM(it.id, it.area, "${it.bedrooms}", "${it.bathrooms}", "${it.carSpaces}",

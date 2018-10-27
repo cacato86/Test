@@ -1,16 +1,19 @@
 package com.cct.sentiatest.ui.features.properties.list
 
+import com.cct.sentiatest.data.bd.SharedPreferencesDataSource
 import com.cct.sentiatest.data.net.properties.PropertiesApi
 import com.cct.sentiatest.data.net.properties.PropertiesDataSource
 import com.cct.sentiatest.data.net.properties.PropertiesMapper
 import com.cct.sentiatest.domain.repositories.PropertyRepository
 import com.cct.sentiatest.domain.usecases.ObtainPropertiesUseCase
+import com.cct.sentiatest.domain.usecases.RestorePropertiesUseCase
+import com.cct.sentiatest.ui.commons.BaseView
 import com.cct.sentiatest.ui.features.properties.ListPropertiesMapper
+import com.cct.sentiatest.ui.features.properties.list.ListPropertiesAction.LoadProperties
 import com.cct.sentiatest.ui.features.properties.list.ListPropertiesState.*
 import com.cct.sentiatest.utils.ListPropertiesFactory.generateEmptyPropertiesResponse
 import com.cct.sentiatest.utils.configureRxThreading
 import com.nhaarman.mockito_kotlin.*
-import com.cct.sentiatest.ui.commons.BaseView
 import io.reactivex.Single
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -25,6 +28,8 @@ class ListPropertiesPresenterTest {
     private lateinit var presenter: ListPropertiesPresenter
     private lateinit var view: BaseView<ListPropertiesState>
     private lateinit var propertyRepository: PropertyRepository
+    private lateinit var api: PropertiesApi
+    private lateinit var sharedPreferencesDS: SharedPreferencesDataSource
 
     @Captor
     private lateinit var captor: ArgumentCaptor<ListPropertiesState>
@@ -37,23 +42,26 @@ class ListPropertiesPresenterTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         createMocks()
-        propertyRepository = PropertyRepository(PropertiesDataSource(api, PropertiesMapper()))
+        propertyRepository = PropertyRepository(PropertiesDataSource(api, PropertiesMapper()), sharedPreferencesDS)
         obtainPropertiesUseCase = ObtainPropertiesUseCase(propertyRepository)
-        presenter = ListPropertiesPresenter(obtainPropertiesUseCase, ListPropertiesMapper())
+        val restorePropertiesUseCase = RestorePropertiesUseCase(propertyRepository)
+        presenter = ListPropertiesPresenter(obtainPropertiesUseCase, restorePropertiesUseCase,
+                ListPropertiesMapper())
     }
-
-    private lateinit var api: PropertiesApi
 
     private fun createMocks() {
         view = mock()
         api = mock()
+        sharedPreferencesDS = mock()
     }
 
     @Test
     fun onInit_renderLoadingState() {
         given(api.getProperties()).willReturn(Single.just(generateEmptyPropertiesResponse()))
+        doNothing().`when`(sharedPreferencesDS).savePropertiesList(any())
 
         presenter init view
+        presenter reduce LoadProperties
 
         verify(view, times(3)).render(capture(captor))
         with(captor.allValues) {
@@ -65,8 +73,10 @@ class ListPropertiesPresenterTest {
     @Test
     fun onInit_renderPropertiesSuccessful() {
         given(api.getProperties()).willReturn(Single.just(generateEmptyPropertiesResponse()))
+        doNothing().`when`(sharedPreferencesDS).savePropertiesList(any())
 
         presenter init view
+        presenter reduce LoadProperties
 
         verify(view, times(3)).render(capture(captor))
         with(captor.allValues) {
@@ -77,8 +87,10 @@ class ListPropertiesPresenterTest {
     @Test
     fun onInit_renderRenderGeneralErrorWhenRequestFail() {
         given(api.getProperties()).willReturn(Single.error(Throwable("Error")))
+        doNothing().`when`(sharedPreferencesDS).savePropertiesList(any())
 
         presenter init view
+        presenter reduce LoadProperties
 
         verify(view, times(3)).render(capture(captor))
         with(captor.allValues) {

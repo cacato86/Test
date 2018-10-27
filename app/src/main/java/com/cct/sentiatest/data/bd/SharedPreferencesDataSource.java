@@ -11,6 +11,9 @@ import java.util.List;
 import io.reactivex.Single;
 
 public class SharedPreferencesDataSource {
+
+    private final String PROPERTIES = "PROPERTIES";
+
     private SharedPreferences preferences;
     private Gson gson;
 
@@ -20,11 +23,11 @@ public class SharedPreferencesDataSource {
     }
 
     public void savePropertiesList(List<Property> properties) {
-        preferences.edit().putString("properties", gson.toJson(properties)).apply();
+        preferences.edit().putString(PROPERTIES, gson.toJson(properties)).apply();
     }
 
     public Single<List<Property>> getPropertiesList() {
-        String propertiesListString = preferences.getString("properties", "");
+        String propertiesListString = preferences.getString(PROPERTIES, "");
         return Single.just((List<Property>) gson.fromJson(propertiesListString, new TypeToken<List<Property>>() {
         }.getType()));
     }

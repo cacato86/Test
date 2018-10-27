@@ -20,6 +20,11 @@ import javax.inject.Inject
 
 
 class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
+
+    companion object {
+        private const val LIST_STATE = "LIST_STATE"
+    }
+
     @Inject
     lateinit var presenter: ListPropertiesPresenter
 
@@ -42,11 +47,6 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
         super.onDetach()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.list_properties_layout, container, false)
@@ -55,7 +55,7 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         val listState = listProperties.layoutManager.onSaveInstanceState()
-        outState.putParcelable("LIST_STATE", listState)
+        outState.putParcelable(LIST_STATE, listState)
     }
 
     private var listState: Parcelable? = null
@@ -63,12 +63,14 @@ class ListPropertiesFragment : Fragment(), BaseView<ListPropertiesState> {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initView()
+
         presenter init (this)
+
         if (savedInstanceState == null) {
             presenter reduce LoadProperties
         } else {
             presenter reduce RestoreData
-            listState = savedInstanceState.getParcelable("LIST_STATE") as Parcelable
+            listState = savedInstanceState.getParcelable(LIST_STATE) as Parcelable
         }
     }
 

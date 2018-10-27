@@ -7,5 +7,5 @@ import javax.inject.Inject
 
 class RestorePropertiesUseCase @Inject constructor(private val propertyRepository: PropertyRepository) {
     fun execute(): Single<List<Property>> = propertyRepository.restoreProperties()
-            .map { it.sortedWith(compareByDescending { it.isPremium }) }
+            .map { it -> it.sortedWith(compareByDescending { it.isPremium }) }
 }

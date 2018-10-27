@@ -11,7 +11,6 @@ import com.cct.sentiatest.ui.utils.observeOnUI
 import com.cct.sentiatest.ui.utils.plusAssign
 import javax.inject.Inject
 
-
 class ListPropertiesPresenter @Inject
 constructor(private val obtainProperties: ObtainPropertiesUseCase,
             private val restoreProperties: RestorePropertiesUseCase,
@@ -22,7 +21,7 @@ constructor(private val obtainProperties: ObtainPropertiesUseCase,
         when (action) {
             is LoadProperties -> loadProperties()
             is OpenDetail -> openDetail(action.property)
-            is RestoreData -> returnData()
+            is RestoreData -> restoreData()
         }
     }
 
@@ -40,7 +39,7 @@ constructor(private val obtainProperties: ObtainPropertiesUseCase,
         render(OpenPropertyDetail(property.id))
     }
 
-    private fun returnData() {
+    private fun restoreData() {
         disposables += restoreProperties.execute()
                 .observeOnUI()
                 .subscribe({
