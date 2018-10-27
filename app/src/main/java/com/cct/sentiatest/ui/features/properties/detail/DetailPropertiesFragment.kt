@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cct.sentiatest.R
-import kotlinx.android.synthetic.main.detail_property_layout.*
+import kotlinx.android.synthetic.main.detail_property_fragment_layout.*
 
 class DetailPropertiesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.detail_property_layout, container, false)
+        return inflater.inflate(R.layout.detail_property_fragment_layout, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -8,6 +8,7 @@
     <color name="blackTransparent50">#7a000000</color>
     <color name="blackTransparent20">#2e000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="whiteTransparent20">#5effffff</color>
     <color name="grey">#7e7e7e</color>
     <color name="separator">#7e7e7e</color>
     <color name="gold">#ecbc0d</color>
